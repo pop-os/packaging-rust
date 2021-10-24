@@ -1,0 +1,39 @@
+Source: rust
+Section: devel
+Priority: optional
+Maintainer: Michael Aaron Murphy <mmstick@pm.me>
+Standards-Version: 4.1.1
+Homepage: https://github.com/pop-os/rust-packaging
+Build-Depends:
+  debhelper-compat (=10),
+  curl
+
+Package: cargo
+Architecture: amd64 arm64
+Description: Rust package manager
+Depends: curl, rustc, ${misc:Depends}
+
+Package: cargo-doc
+Architecture: all
+Description: Rust package manager, documentation
+Depends: ${misc:Depends}
+
+Package: rustc
+Architecture: amd64 arm64
+Description: Rust compiler build from rust-lang.org
+Depends: curl, ${misc:Depends}
+
+Package: rust-gdb
+Architecture: amd64 arm64
+Description: Rust debugger (gdb)
+Depends: ${misc:Depends}
+
+Package: rust-lldb
+Architecture: amd64 arm64
+Description: Rust debugger (lldb)
+Depends: ${misc:Depends}
+
+Package: rust-doc
+Architecture: all
+Description: Rust documentation
+Depends: ${misc:Depends}

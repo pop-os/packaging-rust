@@ -1,0 +1,4 @@
+/usr/bin/cargo
+/usr/bin/cargo-clippy
+/usr/bin/cargo-fmt
+/usr/etc/bash_completion.d/cargo /usr/share/bash-completion/completions/cargo
