@@ -4,6 +4,12 @@
 /usr/bin/rustc
 /usr/bin/rustdoc
 /usr/bin/rustfmt
-/usr/lib
-/usr/share/man
-/usr/share/zsh
+/usr/lib/libLLVM-13-rust-1.56.0-stable.so
+/usr/lib/librustc_driver-d767902d1c6d74c6.so
+/usr/lib/libstd-8142ba460901c3ec.so
+/usr/lib/libtest-dfcbb96fdb281dd3.so
+/usr/lib/rustlib/*/analysis
+/usr/lib/rustlib/*/bin
+/usr/lib/rustlib/*/lib
+/usr/share/man/man1/rustc.1
+/usr/share/man/man1/rustdoc.1
