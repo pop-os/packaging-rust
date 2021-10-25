@@ -5,9 +5,9 @@ Maintainer: Michael Aaron Murphy <mmstick@pm.me>
 Standards-Version: 4.1.1
 Homepage: https://github.com/pop-os/rust-packaging
 Build-Depends:
-  debhelper-compat (=10),
   ca-certificates,
-  curl
+  curl,
+  debhelper-compat (= 10)
 
 Package: cargo
 Architecture: amd64 arm64
