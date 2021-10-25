@@ -17,7 +17,7 @@ distclean:
 
 fetch:
 	# Download the toolchain from rust-lang.org
-	curl --create-dirs -O --output-dir upstream \
+	mkdir -p upstream && cd upstream && curl --create-dirs -O \
 		https://static.rust-lang.org/dist/$(FILENAME).tar.gz
 	# Validate that the toolchain we downloaded matches the expected SHA256 checksum.
 	if test "x86_64" = "$(ARCH)"; then \
