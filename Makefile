@@ -1,7 +1,8 @@
-ARCH     = $(shell uname -m)
-VERSION  = 1.56.0
-FILENAME = rust-$(VERSION)-$(ARCH)-unknown-linux-gnu
-TARBALLS = upstream
+ARCH        = $(shell uname -m)
+VERSION     = 1.56.0
+RUST_TRIPLE = $(ARCH)-unknown-linux-gnu
+FILENAME    = rust-$(VERSION)-$(RUST_TRIPLE)
+TARBALLS    = upstream
 
 all: $(FILENAME)
 
@@ -20,6 +21,9 @@ $(TARBALLS)/$(FILENAME).tar.gz:
 install:
 	sh $(FILENAME)/install.sh --destdir=$(DESTDIR) --prefix=/usr
 	rm $(DESTDIR)/usr/lib/rustlib/uninstall.sh
+	if test "$(ARCH)" = "aarch64"; then \
+		rm -f "$(DESTDIR)/usr/lib/rustlib/$(RUST_TRIPLE)/bin/rust-llvm-dwp"; \
+	fi
 
 mark-prebuild:
 	touch debian/preparing
