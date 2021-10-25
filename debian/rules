@@ -4,9 +4,5 @@
 	dh $@
 
 override_dh_auto_clean:
-	if ischroot; then \
-		make clean; \
-	else \
-		make distclean; \
-		make fetch; \
-	fi
+	if ischroot; then make mark-prebuild; fi
+	make clean
