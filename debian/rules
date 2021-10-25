@@ -6,3 +6,5 @@
 override_dh_auto_clean:
 	if ischroot; then make mark-prebuild; fi
 	make clean
+
+override_dh_strip:
