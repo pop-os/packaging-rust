@@ -1,0 +1,9 @@
+debian
+!debian/*install
+!debian/triggers
+!debian/control
+!debian/rules
+!debian/changelog
+!debian/source
+upstream
+rust-*
