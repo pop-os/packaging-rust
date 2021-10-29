@@ -4,7 +4,7 @@
 	dh $@
 
 override_dh_auto_clean:
-	if ischroot; then make mark-prebuild; fi
-	make clean
+	ischroot && make clean || make distclean
+	ischroot || make vendor
 
 override_dh_strip:

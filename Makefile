@@ -2,20 +2,24 @@ ARCH        = $(shell uname -m)
 VERSION     = 1.56.0
 RUST_TRIPLE = $(ARCH)-unknown-linux-gnu
 FILENAME    = rust-$(VERSION)-$(RUST_TRIPLE)
+COMPRESSED  = $(TARBALLS)/$(FILENAME).tar.gz
 TARBALLS    = upstream
 
 all: $(FILENAME)
 
 $(FILENAME):
-	tar -xf $(TARBALLS)/$(FILENAME).tar.gz
+	tar -xf $(COMPRESSED)
 
-clean: preclean $(TARBALLS)/$(FILENAME).tar.gz
+clean:
 	rm -rf $(FILENAME)
 
-preclean:
-	if test -e debian/preparing; then rm -rf upstream debian/preparing; fi
+distclean:
+	rm -rf $(FILENAME) upstream rust-*
 
-$(TARBALLS)/$(FILENAME).tar.gz:
+
+vendor: $(COMPRESSED)
+
+$(COMPRESSED):
 	bash fetch.sh $(TARBALLS) $(FILENAME) $(ARCH)
 
 install:
@@ -24,6 +28,3 @@ install:
 	if test "$(ARCH)" = "aarch64"; then \
 		rm -f "$(DESTDIR)/usr/lib/rustlib/$(RUST_TRIPLE)/bin/rust-llvm-dwp"; \
 	fi
-
-mark-prebuild:
-	touch debian/preparing
