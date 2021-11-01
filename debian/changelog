@@ -1,3 +1,9 @@
+rust (1.56.1) impish; urgency=medium
+
+  * https://blog.rust-lang.org/2021/11/01/Rust-1.56.1.html 
+
+ -- Michael Aaron Murphy <mmstick@pm.me>  Mon, 01 Nov 2021 16:13:27 +0100
+
 rust (1.56.0) impish; urgency=medium
 
   * Initial release
