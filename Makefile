@@ -1,5 +1,5 @@
 ARCH        = $(shell uname -m)
-VERSION     = 1.56.0
+VERSION     = 1.56.1
 RUST_TRIPLE = $(ARCH)-unknown-linux-gnu
 FILENAME    = rust-$(VERSION)-$(RUST_TRIPLE)
 COMPRESSED  = $(TARBALLS)/$(FILENAME).tar.gz
@@ -15,7 +15,6 @@ clean:
 
 distclean:
 	rm -rf $(FILENAME) upstream rust-*
-
 
 vendor: $(COMPRESSED)
 
