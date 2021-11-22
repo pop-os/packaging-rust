@@ -19,7 +19,7 @@ distclean:
 vendor: $(COMPRESSED)
 
 $(COMPRESSED):
-	bash fetch.sh $(TARBALLS) $(FILENAME) $(ARCH)
+	bash fetch.sh $(TARBALLS) $(VERSION)
 
 install:
 	sh $(FILENAME)/install.sh --destdir=$(DESTDIR) --prefix=/usr

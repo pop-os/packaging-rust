@@ -4,10 +4,7 @@
 /usr/bin/rustc
 /usr/bin/rustdoc
 /usr/bin/rustfmt
-/usr/lib/libLLVM-*-rust-*-stable.so
-/usr/lib/librustc_driver-*.so
-/usr/lib/libstd-*.so
-/usr/lib/libtest-*.so
+/usr/lib/lib*.so
 /usr/lib/rustlib/*/analysis
 /usr/lib/rustlib/*/bin
 /usr/lib/rustlib/*/lib
