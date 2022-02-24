@@ -1,3 +1,9 @@
+rust (1.59.0) impish; urgency=medium
+
+  * https://blog.rust-lang.org/2022/02/24/Rust-1.59.0.html 
+
+ -- Michael Aaron Murphy <mmstick@pm.me>  Thu, 24 Feb 2022 18:35:14 +0100
+
 rust (1.58.1) impish; urgency=medium
 
   * https://blog.rust-lang.org/2022/01/20/Rust-1.58.1.html 
