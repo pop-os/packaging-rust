@@ -3,7 +3,7 @@ Section: devel
 Priority: optional
 Maintainer: Michael Aaron Murphy <mmstick@pm.me>
 Standards-Version: 4.1.1
-Homepage: https://github.com/pop-os/rust-packaging
+Homepage: https://github.com/pop-os/packaging-rust
 Build-Depends:
   ca-certificates,
   curl,
