@@ -1,9 +1,9 @@
 #!/bin/bash
 
-set -ex
+set -e
 
-SHASUM_x86_64=0c1c2da3fa26372e5178123aa5bb0fdcd4933fbad9bfb268ffbd71807182ecae
-SHASUM_AARCH64=ab5da30a3de5433e26cbc74c56b9d97b569769fc2e456fc54378adc8baaee4f0
+SHASUM_x86_64=b8a4c3959367d053825e31f90a5eb86418eb0d80cacda52bfa80b078e18150d5
+SHASUM_AARCH64=99c419c2f35d4324446481c39402c7baecd7a8baed7edca9f8d6bbd33c05550c
 
 TARGET="$1"
 VERSION="$2"
@@ -35,8 +35,9 @@ rm -rf ${TARGET}
 mkdir -p ${TARGET}
 cd ${TARGET}
 
-fetch x86_64
-validate x86_64
+function fetch_target() {
+    validate ${1} || (fetch ${1} && validate ${1})
+}
 
-fetch aarch64
-validate aarch64
+fetch_target x86_64
+fetch_target aarch64

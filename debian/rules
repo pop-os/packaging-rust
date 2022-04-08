@@ -4,7 +4,12 @@
 	dh $@
 
 override_dh_auto_clean:
-	ischroot && make clean || make distclean
-	ischroot || make vendor
+	ischroot || bash fetch.sh upstream 1.60.0
+
+override_dh_auto_build:
+	just
+
+override_dh_auto_install:
+	just rootdir=debian/tmp install
 
 override_dh_strip:
