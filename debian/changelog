@@ -1,3 +1,9 @@
+rust (1.61.0) jammy; urgency=medium
+
+  * https://blog.rust-lang.org/2022/05/19/Rust-1.61.0.html
+
+ -- Michael Aaron Murphy <mmstick@pm.me>  Fri, 20 May 2022 19:04:51 +0200
+
 rust (1.60.0) jammy; urgency=medium
 
   * https://blog.rust-lang.org/2022/04/07/Rust-1.60.0.html
