@@ -1,8 +1,8 @@
 rootdir := ''
 arch := `uname -m`
-version := '1.62.0'
-target := arch + '-unknown-linux-gnu'
-filename := 'rust-' + version + '-' + target
+version := '1.7.3'
+target := 'julia-' + version
+filename := 'julia-' + version + '-linux-' + arch
 tarballs := 'upstream'
 compressed := tarballs + '/' + filename + '.tar.gz'
 
@@ -10,11 +10,8 @@ all:
 	tar -xf {{compressed}}
 
 distclean:
-	rm -rf {{filename}} upstream rust-*
+	rm -rf {{filename}} upstream julia-*
 
 install:
-	sh {{filename}}/install.sh --destdir={{rootdir}} --prefix=/usr
-	rm {{rootdir}}/usr/lib/rustlib/uninstall.sh
-	if test "{{arch}}" = "aarch64"; then \
-		rm -f "{{rootdir}}/usr/lib/rustlib/{{target}}/bin/rust-llvm-dwp"; \
-	fi
+  mkdir -p {{rootdir}}/usr
+  cp ./{{target}}/* {{rootdir}}/usr -r

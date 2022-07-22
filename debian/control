@@ -1,46 +1,29 @@
-Source: rust
+Source: julia
 Section: devel
 Priority: optional
-Maintainer: Michael Aaron Murphy <mmstick@pm.me>
+Maintainer: Brock Szuszczewicz <bnr@tuta.io>
 Standards-Version: 4.1.1
-Homepage: https://github.com/pop-os/packaging-rust
+Homepage: https://github.com/pop-os/packaging-julia
 Build-Depends:
   ca-certificates,
   curl,
   debhelper-compat (= 10),
   just
 
-Package: cargo
-Architecture: amd64 arm64
-Description: Rust package manager
-Depends: curl, rustc, ${misc:Depends}
-
-Package: cargo-doc
+Package: julia
 Architecture: all
-Description: Rust package manager, documentation
-Depends: ${misc:Depends}
-
-Package: rust-all
-Architecture: all
-Description: Metapackage that installs everything
-Depends: cargo, cargo-doc, rustc, rust-doc, rust-gdb, rust-lldb
-
-Package: rustc
-Architecture: amd64 arm64
-Description: Rust compiler build from rust-lang.org
-Depends: curl, ${misc:Depends}
-
-Package: rust-gdb
-Architecture: amd64 arm64
-Description: Rust debugger (gdb)
-Depends: ${misc:Depends}
-
-Package: rust-lldb
-Architecture: amd64 arm64
-Description: Rust debugger (lldb)
-Depends: ${misc:Depends}
-
-Package: rust-doc
-Architecture: all
-Description: Rust documentation
-Depends: ${misc:Depends}
+Breaks: julia-common (<< 0.5.0~)
+Recommends: git, openssl
+Description: high-performance programming language for technical computing
+ Julia is a high-level, high-performance dynamic programming language for
+ technical computing, with syntax that is familiar to users of other technical
+ computing environments. It provides a sophisticated compiler, distributed
+ parallel execution, numerical accuracy, and an extensive mathematical function
+ library. The library, mostly written in Julia itself, also integrates mature,
+ best-of-breed C and Fortran libraries for linear algebra, random number
+ generation, FFTs, and string processing. Julia programs are organized around
+ defining functions, and overloading them for different combinations of
+ argument types (which can also be user-defined).
+ .
+ This package provides a complete Julia installation (JIT compiler, standard
+ library, text-based user interface).

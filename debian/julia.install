@@ -1,0 +1,14 @@
+/usr/bin/julia
+/usr/share/appdata/julia.appdata.xml
+/usr/share/applications/julia.desktop
+/usr/share/julia/base.cache
+/usr/share/julia/base/build_h.jl
+/usr/lib/julia
+/usr/lib/libjulia.so.*
+/usr/share/julia/base
+#usr/share/julia/build_sysimg.jl
+/usr/share/julia/julia-config.jl
+/usr/share/julia/stdlib
+/usr/share/julia/test
+/usr/include/julia
+/usr/lib/libjulia.so

@@ -1,9 +1,10 @@
 debian
 !debian/*install
+!debian/not-installed
 !debian/triggers
 !debian/control
 !debian/rules
 !debian/changelog
 !debian/source
 upstream
-rust-*
+julia-*
