@@ -13,3 +13,6 @@ override_dh_auto_install:
 	just rootdir=debian/tmp install
 
 override_dh_strip:
+
+override_dh_shlibdeps:
+

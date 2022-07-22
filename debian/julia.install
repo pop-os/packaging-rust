@@ -1,5 +1,5 @@
 /usr/bin/julia
-/usr/share/appdata/julia.appdata.xml
+/usr/share/appdata/julia.appdata.xml /usr/share/metainfo/julia.appdata.xml
 /usr/share/applications/julia.desktop
 /usr/share/julia/base.cache
 /usr/share/julia/base/build_h.jl

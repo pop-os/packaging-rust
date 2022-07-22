@@ -11,8 +11,9 @@ Build-Depends:
   just
 
 Package: julia
-Architecture: all
+Architecture: amd64 arm64
 Breaks: julia-common (<< 0.5.0~)
+Depends: ${misc:Depends}
 Recommends: git, openssl
 Description: high-performance programming language for technical computing
  Julia is a high-level, high-performance dynamic programming language for
@@ -27,3 +28,4 @@ Description: high-performance programming language for technical computing
  .
  This package provides a complete Julia installation (JIT compiler, standard
  library, text-based user interface).
+
