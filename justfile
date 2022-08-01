@@ -14,4 +14,6 @@ distclean:
 
 install:
   mkdir -p {{rootdir}}/usr
+  mkdir -p {{rootdir}}/usr/share/licenses/julia
   cp ./{{target}}/* {{rootdir}}/usr -r
+  install -Dm644 ./{{target}}/LICENSE.md {{rootdir}}/usr/share/licenses/julia/LICENSE.md

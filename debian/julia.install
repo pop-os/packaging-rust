@@ -12,3 +12,5 @@
 /usr/share/julia/test
 /usr/include/julia
 /usr/lib/libjulia.so
+/usr/share/licenses/julia
+/usr/share/julia/cert.pem
