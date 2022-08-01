@@ -1,10 +1,8 @@
-debian
-!debian/*install
-!debian/not-installed
-!debian/triggers
-!debian/control
-!debian/rules
-!debian/changelog
-!debian/source
+debian/tmp
+debian/.debhelper
+debian/debhelper-build-stamp
+debian/files
+debian/julia.substvars
+debian/julia
 upstream
 julia-*
