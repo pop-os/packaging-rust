@@ -1,6 +1,6 @@
 rootdir := ''
 arch := `uname -m`
-version := '1.62.0'
+version := '1.63.0'
 target := arch + '-unknown-linux-gnu'
 filename := 'rust-' + version + '-' + target
 tarballs := 'upstream'
