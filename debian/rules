@@ -1,14 +1,14 @@
 #!/usr/bin/make -f
 
-VERSION=1.65.0
+VERSION=1.67.1
 
 %:
 	dh $@
 
 override_dh_auto_clean:
 	ischroot || bash fetch.sh upstream $(VERSION) \
-		8f754fdd5af783fe9020978c64e414cb45f3ad0a6f44d045219bbf2210ca3cb9 \
-		f406136010e6a1cdce3fb6573506f00d23858af49dd20a46723c3fa5257b7796
+		652a8966436c4e97b127721d9130810e1cdc8dfdf526fad68c9c1f6281bd02a3 \
+		8edee248eed4b17c09b3d7b0096944b7e5992dd1119a28429c0b6b4d39a9613c
 #	ischroot || just version=$(VERSION) fetch
 
 override_dh_auto_build:
@@ -18,3 +18,6 @@ override_dh_auto_install:
 	just version=$(VERSION) rootdir=debian/tmp install
 
 override_dh_strip:
+
+override_dh_shlibdeps:
+	dh_shlibdeps -Xclippy

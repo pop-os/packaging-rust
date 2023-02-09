@@ -14,7 +14,7 @@ distclean:
 
 install:
 	#!/bin/sh
-	sh {{filename}}/install.sh --destdir={{rootdir}} --prefix=/usr
+	sh {{filename}}/install.sh --destdir={{rootdir}} --prefix=/usr --verbose
 	rm {{rootdir}}/usr/lib/rustlib/uninstall.sh
 	if test "{{arch}}" = "aarch64"; then
 		rm -f "{{rootdir}}/usr/lib/rustlib/{{target}}/bin/rust-llvm-dwp"
