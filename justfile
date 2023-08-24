@@ -20,7 +20,7 @@ install:
 		rm -f "{{rootdir}}/usr/lib/rustlib/{{target}}/bin/rust-llvm-dwp"
 	fi
 
-fetch sum_x86_64 sum_aarch64:
+download:
 	#!/bin/bash
 	function fetch () {
 		echo fetching ${1}
@@ -31,6 +31,40 @@ fetch sum_x86_64 sum_aarch64:
 		curl --create-dirs -O "https://static.rust-lang.org/dist/${FILENAME}.tar.gz"
 	}
 
+	function validate() {
+		RUST_TRIPLE="${1}-unknown-linux-gnu"
+		FILENAME="rust-{{version}}-${RUST_TRIPLE}"
+		FETCHED_FILE="${FILENAME}.tar.gz"
+
+		# Validate that the toolchain we downloaded matches the expected SHA256 checksum.
+		SUM="$(sha256sum ${FETCHED_FILE} | cut -d' ' -f1)"
+
+		case "${1}" in
+			"x86_64")
+				echo "x86_64 sum: ${SUM}"
+				;;
+			"aarch64")
+				echo "aarch64 sum: ${SUM}"
+				;;
+			*)
+				echo "Unsupported architecture: ${1}"
+				return 1
+				;;
+		esac
+	}
+
+	mkdir -p {{tarballs}}
+	cd {{tarballs}}
+
+	function fetch_target() {
+		fetch ${1} && validate ${1}
+	}
+
+	fetch_target x86_64
+	fetch_target aarch64
+
+validate sum_x86_64 sum_aarch64: download
+	#!/bin/bash
 	function validate() {
 		echo validating ${1}
 		RUST_TRIPLE="${1}-unknown-linux-gnu"
@@ -54,12 +88,5 @@ fetch sum_x86_64 sum_aarch64:
 		esac
 	}
 
-	mkdir -p {{tarballs}}
-	cd {{tarballs}}
-
-	function fetch_target() {
-		validate ${1} || (fetch ${1} && validate ${1})
-	}
-
-	fetch_target x86_64
-	fetch_target aarch64
+	validate x86_64
+	validate aarch64
