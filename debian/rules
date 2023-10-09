@@ -1,14 +1,14 @@
 #!/usr/bin/make -f
 
-VERSION=1.72.0
+VERSION=1.73.0
 
 %:
 	dh $@
 
 override_dh_auto_clean:
 	ischroot || bash fetch.sh upstream $(VERSION) \
-		f2bbe23e685852104fd48d0e34ac981b0917e76c62cfcd6d0ac5283e4710c7b9 \
-		801598f69ac32969c436ae8a6dd01c64bbed094412e4dbefcf47f56faed056c1
+		aa4cf0b7e66a9f5b7c623d4b340bb1ac2864a5f2c2b981f39f796245dc84f2cb \
+		e54d7d886ba413ae573151f668e76ea537f9a44406d3d29598269a4a536d12f6
 #	ischroot || just version=$(VERSION) fetch
 
 override_dh_auto_build:
