@@ -10,15 +10,15 @@ SHASUM_AARCH64="$4"
 function fetch () {
     RUST_TRIPLE="${1}-unknown-linux-gnu"
     FILENAME="rust-${VERSION}-${RUST_TRIPLE}"
-    FETCHED_FILE="${TARGET}/${FILENAME}.tar.gz"
+    FETCHED_FILE="${TARGET}/${FILENAME}.tar.xz"
 
-    curl --create-dirs -O "https://static.rust-lang.org/dist/${FILENAME}.tar.gz"
+    curl --create-dirs -O "https://static.rust-lang.org/dist/${FILENAME}.tar.xz"
 }
 
 function validate() {
     RUST_TRIPLE="${1}-unknown-linux-gnu"
     FILENAME="rust-${VERSION}-${RUST_TRIPLE}"
-    FETCHED_FILE="${FILENAME}.tar.gz"
+    FETCHED_FILE="${FILENAME}.tar.xz"
 
     # Validate that the toolchain we downloaded matches the expected SHA256 checksum.
     if test "x86_64" = "${1}"; then

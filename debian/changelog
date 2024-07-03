@@ -1,3 +1,9 @@
+rust (1.79.0) jammy; urgency=medium
+
+  * https://blog.rust-lang.org/2024/06/13/Rust-1.79.0.html
+
+ -- Michael Aaron Murphy <michael@mmurphy.dev>  Wed, 03 Jul 2024 21:14:24 +0200
+
 rust (1.75.0) jammy; urgency=medium
 
   * https://blog.rust-lang.org/2023/12/28/Rust-1.75.0.html
