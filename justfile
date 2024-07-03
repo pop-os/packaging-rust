@@ -4,7 +4,7 @@ version := 'unset'
 target := arch + '-unknown-linux-gnu'
 filename := 'rust-' + version + '-' + target
 tarballs := 'upstream'
-compressed := tarballs + '/' + filename + '.tar.gz'
+compressed := tarballs + '/' + filename + '.tar.xz'
 
 all:
 	tar -xf {{compressed}}
@@ -20,73 +20,40 @@ install:
 		rm -f "{{rootdir}}/usr/lib/rustlib/{{target}}/bin/rust-llvm-dwp"
 	fi
 
-download:
+download target version shasum_x86_64 shasum_aarch64:
 	#!/bin/bash
+	set -e
+
 	function fetch () {
-		echo fetching ${1}
 		RUST_TRIPLE="${1}-unknown-linux-gnu"
 		FILENAME="rust-{{version}}-${RUST_TRIPLE}"
-		FETCHED_FILE="{{tarballs}}/${FILENAME}.tar.gz"
+		FETCHED_FILE="{{target}}/${FILENAME}.tar.xz"
 
-		curl --create-dirs -O "https://static.rust-lang.org/dist/${FILENAME}.tar.gz"
+		curl --create-dirs -O "https://static.rust-lang.org/dist/${FILENAME}.tar.xz"
 	}
 
 	function validate() {
 		RUST_TRIPLE="${1}-unknown-linux-gnu"
 		FILENAME="rust-{{version}}-${RUST_TRIPLE}"
-		FETCHED_FILE="${FILENAME}.tar.gz"
+		FETCHED_FILE="${FILENAME}.tar.xz"
 
 		# Validate that the toolchain we downloaded matches the expected SHA256 checksum.
-		SUM="$(sha256sum ${FETCHED_FILE} | cut -d' ' -f1)"
-
-		case "${1}" in
-			"x86_64")
-				echo "x86_64 sum: ${SUM}"
-				;;
-			"aarch64")
-				echo "aarch64 sum: ${SUM}"
-				;;
-			*)
-				echo "Unsupported architecture: ${1}"
-				return 1
-				;;
-		esac
+		if test "x86_64" = "${1}"; then
+			test "{{shasum_x86_64}}" = "$(sha256sum ${FETCHED_FILE} | cut -d' ' -f1)"
+		elif test "aarch64" = "${1}"; then
+			test "{{shasum_aarch64}}" = "$(sha256sum ${FETCHED_FILE} | cut -d' ' -f1)"
+		else
+			return 1
+		fi
 	}
 
-	mkdir -p {{tarballs}}
-	cd {{tarballs}}
+	rm -rf {{target}}
+	mkdir -p {{target}}
+	cd {{target}}
 
 	function fetch_target() {
-		fetch ${1} && validate ${1}
+		validate ${1} || (fetch ${1} && validate ${1})
 	}
 
 	fetch_target x86_64
 	fetch_target aarch64
-
-validate sum_x86_64 sum_aarch64: download
-	#!/bin/bash
-	function validate() {
-		echo validating ${1}
-		RUST_TRIPLE="${1}-unknown-linux-gnu"
-		FILENAME="rust-{{version}}-${RUST_TRIPLE}"
-		FETCHED_FILE="${FILENAME}.tar.gz"
-
-		# Validate that the toolchain we downloaded matches the expected SHA256 checksum.
-		SUM="$(sha256sum ${FETCHED_FILE} | cut -d' ' -f1)"
-
-		case "${1}" in
-			"x86_64")
-				test "{{sum_x86_64}}" = "${SUM}"
-				;;
-			"aarch64")
-				test "{{sum_aarch64}}" = "${SUM}"
-				;;
-			*)
-				echo "Unsupported architecture: ${1}"
-				return 1
-				;;
-		esac
-	}
-
-	validate x86_64
-	validate aarch64
