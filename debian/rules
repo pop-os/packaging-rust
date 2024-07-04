@@ -6,7 +6,6 @@ VERSION=1.79.0
 	dh $@
 
 override_dh_auto_clean:
-	env
 	ischroot || bash fetch.sh upstream $(VERSION) \
 		ce552d6bf22a2544ea78647d98cb405d5089af58dbcaa4efea711bf8becd71c5 \
 		8e7a2d514ee469325e5a7d0a2f0cad313aecb4c3da134f3bf84f7901a809d566
@@ -16,8 +15,9 @@ override_dh_auto_build:
 
 override_dh_auto_install:
 	just version=$(VERSION) rootdir=debian/tmp install
+	patchelf --add-needed /usr/lib/rustlib/$(DEB_TARGET_GNU_CPU)-unknown-linux-gnu/lib/libLLVM.so.18.1-rust-1.79.0-stable  debian/tmp/usr/bin/rustc
 
 override_dh_strip:
 
 override_dh_shlibdeps:
-	dh_shlibdeps -Xclippy -l/usr/lib/rustlib/$(DEB_TARGET_GNU_CPU)-unknown-linux-gnu/lib/
+	# dh_shlibdeps -Xclippy -l/usr/lib/rustlib/$(DEB_TARGET_GNU_CPU)-unknown-linux-gnu/lib/

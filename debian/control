@@ -8,7 +8,8 @@ Build-Depends:
   ca-certificates,
   curl,
   debhelper-compat (= 10),
-  just
+  just,
+  patchelf,
 
 Package: cargo
 Architecture: amd64 arm64
