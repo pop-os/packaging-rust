@@ -1,10 +1,8 @@
-/usr/bin/clippy-driver
 /usr/bin/rust-analyzer
 /usr/bin/rls
 /usr/bin/rust-demangler
 /usr/bin/rustc
 /usr/bin/rustdoc
-/usr/bin/rustfmt
 /usr/lib/lib*.so
 /usr/lib/rustlib/*/analysis
 /usr/lib/rustlib/*/bin

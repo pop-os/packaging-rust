@@ -1,6 +1,4 @@
 /usr/bin/cargo
-/usr/bin/cargo-clippy
-/usr/bin/cargo-fmt
 /usr/share/man/man1/cargo-bench.1
 /usr/share/man/man1/cargo-build.1
 /usr/share/man/man1/cargo-check.1

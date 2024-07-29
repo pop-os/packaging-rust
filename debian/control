@@ -24,12 +24,22 @@ Depends: ${misc:Depends}
 Package: rust-all
 Architecture: all
 Description: Metapackage that installs everything
-Depends: cargo, cargo-doc, rustc, rust-doc, rust-gdb, rust-lldb
+Depends: cargo, cargo-doc, rustc, rustfmt, rust-clippy, rust-doc, rust-gdb, rust-lldb
 
 Package: rustc
 Architecture: amd64 arm64
 Description: Rust compiler build from rust-lang.org
 Depends: curl, ${misc:Depends}
+
+Package: rustfmt
+Architecture: amd64 arm64
+Description: Rust formatter
+Depends: rustc, cargo, ${misc:Depends}
+
+Package: rust-clippy
+Architecture: amd64 arm64
+Description: Rust linter
+Depends: rustc, cargo, ${misc:Depends}
 
 Package: rust-gdb
 Architecture: amd64 arm64
