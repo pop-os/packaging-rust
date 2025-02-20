@@ -1,4 +1,4 @@
-debian
+debian/*
 !debian/*install
 !debian/triggers
 !debian/control
