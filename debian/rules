@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-VERSION=$(shell dpkg-parsechangelog --show-field Version)
+VERSION=1.85.0
 
 %:
 	dh $@
