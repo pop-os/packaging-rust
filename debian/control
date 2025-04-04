@@ -12,7 +12,7 @@ Build-Depends:
   patchelf,
 
 Package: cargo
-Architecture: amd64 arm64
+Architecture: amd64 arm64 i386 armhf
 Description: Rust package manager
 Depends: curl, rustc, ${misc:Depends}
 
@@ -27,27 +27,27 @@ Description: Metapackage that installs everything
 Depends: cargo, cargo-doc, rustc, rustfmt, rust-clippy, rust-doc, rust-gdb, rust-lldb
 
 Package: rustc
-Architecture: amd64 arm64
+Architecture: amd64 arm64 i386 armhf
 Description: Rust compiler build from rust-lang.org
 Depends: curl, ${misc:Depends}
 
 Package: rustfmt
-Architecture: amd64 arm64
+Architecture: amd64 arm64 i386 armhf
 Description: Rust formatter
 Depends: rustc, cargo, ${misc:Depends}
 
 Package: rust-clippy
-Architecture: amd64 arm64
+Architecture: amd64 arm64 i386 armhf
 Description: Rust linter
 Depends: rustc, cargo, ${misc:Depends}
 
 Package: rust-gdb
-Architecture: amd64 arm64
+Architecture: amd64 arm64 i386 armhf
 Description: Rust debugger (gdb)
 Depends: ${misc:Depends}
 
 Package: rust-lldb
-Architecture: amd64 arm64
+Architecture: amd64 arm64 i386 armhf
 Description: Rust debugger (lldb)
 Depends: ${misc:Depends}
 
