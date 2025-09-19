@@ -1,5 +1,4 @@
 /usr/bin/rust-analyzer
-/usr/bin/rls
 /usr/bin/rustc
 /usr/bin/rustdoc
 /usr/lib/lib*.so

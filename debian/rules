@@ -1,14 +1,14 @@
 #!/usr/bin/make -f
 
-VERSION=1.85.0
+VERSION=1.89.0
 
 %:
 	dh $@
 
 override_dh_auto_clean:
 	ischroot || bash fetch.sh upstream $(VERSION) \
-		6f8b323ed2a34ccf0031631b85d79e1133da662094566bc910432da9bd3a5b42 \
-		024918027c349bd237617a8a1207d7c4462f70549a31e8bf6c14b0601cfd489e
+		c4f2796b10ee886001f0799bc40caea38746403a33c379d77878c4f4683f9b51 \
+		ae6f35b027cb32339fa4ac94dab37a21194e9a5c680491d01e54aa61e9da4de7
 
 override_dh_auto_build:
 	just version=$(VERSION)
@@ -16,10 +16,10 @@ override_dh_auto_build:
 override_dh_auto_install:
 	just version=$(VERSION) rootdir=debian/tmp install
 	if test $(DEB_TARGET_GNU_CPU) = "x86_64"; then \
-		patchelf --add-needed /usr/lib/rustlib/$(DEB_TARGET_GNU_CPU)-unknown-linux-gnu/lib/libLLVM.so.19.1-rust-$(VERSION)-stable  debian/tmp/usr/bin/cargo-clippy; \
-		patchelf --add-needed /usr/lib/rustlib/$(DEB_TARGET_GNU_CPU)-unknown-linux-gnu/lib/libLLVM.so.19.1-rust-$(VERSION)-stable  debian/tmp/usr/bin/clippy-driver; \
-		patchelf --add-needed /usr/lib/rustlib/$(DEB_TARGET_GNU_CPU)-unknown-linux-gnu/lib/libLLVM.so.19.1-rust-$(VERSION)-stable  debian/tmp/usr/bin/rustc; \
-		patchelf --add-needed /usr/lib/rustlib/$(DEB_TARGET_GNU_CPU)-unknown-linux-gnu/lib/libLLVM.so.19.1-rust-$(VERSION)-stable  debian/tmp/usr/bin/rustfmt; \
+		patchelf --add-needed /usr/lib/rustlib/$(DEB_TARGET_GNU_CPU)-unknown-linux-gnu/lib/libLLVM.so.20.1-rust-$(VERSION)-stable  debian/tmp/usr/bin/cargo-clippy; \
+		patchelf --add-needed /usr/lib/rustlib/$(DEB_TARGET_GNU_CPU)-unknown-linux-gnu/lib/libLLVM.so.20.1-rust-$(VERSION)-stable  debian/tmp/usr/bin/clippy-driver; \
+		patchelf --add-needed /usr/lib/rustlib/$(DEB_TARGET_GNU_CPU)-unknown-linux-gnu/lib/libLLVM.so.20.1-rust-$(VERSION)-stable  debian/tmp/usr/bin/rustc; \
+		patchelf --add-needed /usr/lib/rustlib/$(DEB_TARGET_GNU_CPU)-unknown-linux-gnu/lib/libLLVM.so.20.1-rust-$(VERSION)-stable  debian/tmp/usr/bin/rustfmt; \
 	fi
 
 override_dh_strip:
