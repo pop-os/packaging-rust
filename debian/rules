@@ -1,24 +1,24 @@
 #!/usr/bin/make -f
 
-VERSION=1.90.0
+VERSION=1.95.0
 
 %:
 	dh $@
 
 override_dh_auto_clean:
 	ischroot || bash fetch.sh upstream $(VERSION) \
-		bff8974f2d3ee6c0e6ac926b533f65bbdd3697d2c2b925bdae5f45b9eed10a67 \
-		59f1883fcdd2d7243d2fd1ed19f22e05219251227abacfa3d656aebfbcc5e838
+		2e0338f18ecbaa4a0f631b9e80e8b8e26bb6fe77dd5454fba8a70cf96c1e84a1 \
+		094c9c36531911c5cc7dd6ab2d3069ab8dcd744d6239b0bda1387b243dfc391e
 
 override_dh_auto_build:
 	just version=$(VERSION)
 
 override_dh_auto_install:
 	just version=$(VERSION) rootdir=debian/tmp install
-	patchelf --add-needed /usr/lib/rustlib/$(DEB_TARGET_GNU_CPU)-unknown-linux-gnu/lib/libLLVM.so.20.1-rust-$(VERSION)-stable  debian/tmp/usr/bin/cargo-clippy; \
-	patchelf --add-needed /usr/lib/rustlib/$(DEB_TARGET_GNU_CPU)-unknown-linux-gnu/lib/libLLVM.so.20.1-rust-$(VERSION)-stable  debian/tmp/usr/bin/clippy-driver; \
-	patchelf --add-needed /usr/lib/rustlib/$(DEB_TARGET_GNU_CPU)-unknown-linux-gnu/lib/libLLVM.so.20.1-rust-$(VERSION)-stable  debian/tmp/usr/bin/rustc; \
-	patchelf --add-needed /usr/lib/rustlib/$(DEB_TARGET_GNU_CPU)-unknown-linux-gnu/lib/libLLVM.so.20.1-rust-$(VERSION)-stable  debian/tmp/usr/bin/rustfmt; \
+	patchelf --add-needed /usr/lib/rustlib/$(DEB_TARGET_GNU_CPU)-unknown-linux-gnu/lib/libLLVM.so.22.1-rust-$(VERSION)-stable  debian/tmp/usr/bin/cargo-clippy; \
+	patchelf --add-needed /usr/lib/rustlib/$(DEB_TARGET_GNU_CPU)-unknown-linux-gnu/lib/libLLVM.so.22.1-rust-$(VERSION)-stable  debian/tmp/usr/bin/clippy-driver; \
+	patchelf --add-needed /usr/lib/rustlib/$(DEB_TARGET_GNU_CPU)-unknown-linux-gnu/lib/libLLVM.so.22.1-rust-$(VERSION)-stable  debian/tmp/usr/bin/rustc; \
+	patchelf --add-needed /usr/lib/rustlib/$(DEB_TARGET_GNU_CPU)-unknown-linux-gnu/lib/libLLVM.so.22.1-rust-$(VERSION)-stable  debian/tmp/usr/bin/rustfmt; \
 
 override_dh_strip:
 
